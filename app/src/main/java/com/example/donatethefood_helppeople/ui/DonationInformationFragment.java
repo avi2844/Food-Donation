@@ -29,6 +29,7 @@ import com.example.donatethefood_helppeople.model_class.InformationModel;
 import com.google.android.material.textfield.TextInputEditText;
 
 import java.util.Calendar;
+import java.util.Locale;
 
 import static android.app.DatePickerDialog.*;
 
@@ -36,7 +37,9 @@ import static android.app.DatePickerDialog.*;
  * A simple {@link Fragment} subclass.
  */
 public class DonationInformationFragment extends Fragment {
-    TextInputEditText donatorName, phone, address, foodName;
+    TextInputEditText donatorName, phone, address;
+    private Spinner Category;
+    private String spinnerItem1;
     private Spinner foodQuantity;
     private String spinnerItem;
     private Button confirmBtn, cancelBtn;
@@ -71,7 +74,7 @@ public class DonationInformationFragment extends Fragment {
         donatorName = view.findViewById(R.id.nameET);
         phone = view.findViewById(R.id.phoneET);
         address = view.findViewById(R.id.addressET);
-        foodName = view.findViewById(R.id.foodNameET);
+        Category = view.findViewById(R.id.Category);
         collectionDate = view.findViewById(R.id.dateET);
         collectionTime = view.findViewById(R.id.timeET);
 
@@ -85,6 +88,11 @@ public class DonationInformationFragment extends Fragment {
                 new ArrayAdapter<>(getActivity(), android.R.layout.simple_spinner_dropdown_item,quantites);
         foodQuantity.setAdapter(adapter);
 
+        final String[] categories = getResources().getStringArray(R.array.category_array);
+        ArrayAdapter<String> adapter1 =
+                new ArrayAdapter<>(getActivity(), android.R.layout.simple_spinner_dropdown_item,categories);
+        Category.setAdapter(adapter1);
+
         foodQuantity.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
@@ -95,6 +103,20 @@ public class DonationInformationFragment extends Fragment {
             public void onNothingSelected(AdapterView<?> adapterView) {
 
             }
+
+        });
+
+        Category.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int j, long l) {
+                spinnerItem1 = adapterView.getItemAtPosition(j).toString();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+
         });
         //set current date & time
         final Calendar c = Calendar.getInstance();
@@ -142,19 +164,42 @@ public class DonationInformationFragment extends Fragment {
                 String name = donatorName.getText().toString();
                 String dphone = phone.getText().toString();
                 String daddress = address.getText().toString();
-                String fName = foodName.getText().toString();
+                String Category = spinnerItem1;
                 String quantity = spinnerItem;
                 String date = collectionDate.getText().toString();
                 String time = collectionTime.getText().toString();
 
-                InformationModel model = new InformationModel(name,dphone,daddress,fName,quantity,date,time);
+                if(donatorName.length()==0)
+                {
+                    donatorName.setError("Field cannot be empty");
+                }
+                else if(phone.length()==0)
+                {
+                    phone.setError("Field cannot be empty");
+                }
+                else if(address.length()==0)
+                {
+                    address.setError("Field cannot be empty");
+                }
+                else if(collectionDate.length()==0)
+                {
+                    collectionDate.setError("Field cannot be empty");
+                }
+                else if(collectionTime.length()==0)
+                {
+                    collectionTime.setError("Field cannot be empty");
+                }
+                else {
+                    InformationModel model = new InformationModel(name, dphone, daddress, Category, quantity, date, time);
 
-                long insertedRowId = DonationDatabase.getInstance(context)
-                        .getDonationDao()
-                        .insertNewDonation(model);
-                if (insertedRowId > 0){
-                    Toast.makeText(context, "Your donation is successful", Toast.LENGTH_SHORT).show();
-                    listener.donationComplete();
+                    long insertedRowId;
+                    insertedRowId = DonationDatabase.getInstance(context)
+                            .getDonationDao()
+                            .insertNewDonation(model);
+                    if (insertedRowId > 0) {
+                        Toast.makeText(context, "Your donation is successful", Toast.LENGTH_SHORT).show();
+                        listener.donationComplete();
+                    }
                 }
             }
         });

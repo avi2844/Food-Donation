@@ -76,23 +76,34 @@ public class VoluteerLogin extends Fragment {
             public void onClick(final View view) {
                 String email = emailIn.getText().toString();
                 String pass = passwordIn.getText().toString();
-                firebaseAuth.signInWithEmailAndPassword(email,pass).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        if (task.isSuccessful()){
-                            currentUser =  firebaseAuth.getCurrentUser();
-                            Toast.makeText(getActivity(), "login successful", Toast.LENGTH_SHORT).show();
-                            listener.loginSuccessful();
+
+                if(emailIn.length()==0)
+                {
+                    emailIn.setError("Field cannot be empty");
+                }
+                else if(passwordIn.length()==0)
+                {
+                    passwordIn.setError("Field cannot be empty");
+                }
+                else {
+                    firebaseAuth.signInWithEmailAndPassword(email, pass).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                        @Override
+                        public void onComplete(@NonNull Task<AuthResult> task) {
+                            if (task.isSuccessful()) {
+                                currentUser = firebaseAuth.getCurrentUser();
+                                Toast.makeText(getActivity(), "login successful", Toast.LENGTH_SHORT).show();
+                                listener.loginSuccessful();
+                            }
                         }
-                    }
-                }).addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-                        Log.e("failed", e.getLocalizedMessage());
-                        Snackbar snackbar = Snackbar.make(linearLayout,""+e.getLocalizedMessage(),Snackbar.LENGTH_LONG);
-                        snackbar.show();
-                    }
-                });
+                    }).addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull Exception e) {
+                            Log.e("failed", e.getLocalizedMessage());
+                            Snackbar snackbar = Snackbar.make(linearLayout, "" + e.getLocalizedMessage(), Snackbar.LENGTH_LONG);
+                            snackbar.show();
+                        }
+                    });
+                }
             }
         });
 

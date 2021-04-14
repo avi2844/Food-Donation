@@ -27,7 +27,7 @@
                 android:id="@+id/emailInput"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="xyz@gamil.com"/>
+                android:hint="xyz@gmail.com"/>
         </com.google.android.material.textfield.TextInputLayout>
     </LinearLayout>
     <LinearLayout
@@ -48,11 +48,13 @@
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
+
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/passwordInput"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="*********"/>
+                android:hint="*********"
+                android:inputType="textPassword" />
         </com.google.android.material.textfield.TextInputLayout>
     </LinearLayout>
     <LinearLayout
@@ -84,6 +86,7 @@
             android:paddingRight="30dp"
             android:text="registration"
             android:textColor="#fff" />
+
     </LinearLayout>
     <LinearLayout
         android:orientation="vertical"

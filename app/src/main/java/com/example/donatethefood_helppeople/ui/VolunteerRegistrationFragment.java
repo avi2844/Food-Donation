@@ -8,6 +8,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -28,7 +29,7 @@ import com.google.firebase.auth.FirebaseUser;
  * A simple {@link Fragment} subclass.
  */
 public class VolunteerRegistrationFragment extends Fragment {
-    EditText email, pass;
+    EditText email, pass ;
     Context context;
     Button confirmBtn;
     FirebaseAuth firebaseAuth;
@@ -67,22 +68,34 @@ public class VolunteerRegistrationFragment extends Fragment {
             public void onClick(View view) {
                 String userEmail = email.getText().toString();
                 String userPass = pass.getText().toString();
-                firebaseAuth.createUserWithEmailAndPassword(userEmail,userPass).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        if (task.isSuccessful()){
-                            currentUser =  firebaseAuth.getCurrentUser();
-                            Toast.makeText(getActivity(), "registration successful", Toast.LENGTH_SHORT).show();
-                            listener.registrationSuccess();
+
+                if(email.length()==0)
+                {
+                    email.setError("Field cannot be empty");
+                }
+                else if(pass.length()==0)
+                {
+                    pass.setError("Field cannot be empty");
+                }
+                else {
+                    firebaseAuth.createUserWithEmailAndPassword(userEmail, userPass).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                        @Override
+                        public void onComplete(@NonNull Task<AuthResult> task) {
+                            if (task.isSuccessful()) {
+                                currentUser = firebaseAuth.getCurrentUser();
+                                Toast.makeText(getActivity(), "registration successful", Toast.LENGTH_SHORT).show();
+                                listener.registrationSuccess();
+                            }
                         }
-                    }
-                }).addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-                        Toast.makeText(getActivity(), ""+e.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
-                        Log.e("failed", e.getLocalizedMessage());
-                    }
-                });
+                    }).addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull Exception e) {
+                            Toast.makeText(getActivity(), "" + e.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
+                            Log.e("failed", e.getLocalizedMessage());
+                        }
+                    });
+                }
+
             }
         });
     }

@@ -10,16 +10,16 @@ public class InformationModel {
     private String donatorName;
     private String phone;
     private String adress;
-    private String foodName;
+    private String Category;
     private String quantity;
     private String date;
     private String time;
 
-    public InformationModel(String donatorName, String phone, String adress, String foodName, String quantity, String date, String time) {
+    public InformationModel(String donatorName, String phone, String adress, String Category, String quantity, String date, String time) {
         this.donatorName = donatorName;
         this.phone = phone;
         this.adress = adress;
-        this.foodName = foodName;
+        this.Category = Category;
         this.quantity = quantity;
         this.date = date;
         this.time = time;
@@ -57,13 +57,11 @@ public class InformationModel {
         this.adress = adress;
     }
 
-    public String getFoodName() {
-        return foodName;
+    public String getCategory() {
+        return Category;
     }
 
-    public void setFoodName(String foodName) {
-        this.foodName = foodName;
-    }
+    public void setCategory(String Category) {this.Category = Category;}
 
     public String getQuantity() {
         return quantity;

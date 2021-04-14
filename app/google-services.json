@@ -1,92 +1,34 @@
 {
   "project_info": {
-    "project_number": "437251478983",
-    "firebase_url": "https://fb-bitm.firebaseio.com",
-    "project_id": "fb-bitm",
-    "storage_bucket": "fb-bitm.appspot.com"
+    "project_number": "408096642564",
+    "firebase_url": "https://fooddonation-71772.firebaseio.com",
+    "project_id": "fooddonation-71772",
+    "storage_bucket": "fooddonation-71772.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:437251478983:android:d548e196bcfd914b4675e2",
+        "mobilesdk_app_id": "1:408096642564:android:d913a12b0630886f3bc751",
         "android_client_info": {
           "package_name": "com.example.donatethefood_helppeople"
         }
       },
       "oauth_client": [
         {
-          "client_id": "437251478983-devn1rmv7akgkk8qth0sq73c49vfi4c4.apps.googleusercontent.com",
+          "client_id": "408096642564-93ev9m58inqfe6ujile8oibf0r4ur7ld.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyA_ZbpcLJ38OcOFWS9PtY0iMK3HHwu-OQ8"
+          "current_key": "AIzaSyBGViLYdus7aOs-k5V6SVl1IGZN0OLxo1s"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "437251478983-devn1rmv7akgkk8qth0sq73c49vfi4c4.apps.googleusercontent.com",
-              "client_type": 3
-            }
-          ]
-        }
-      }
-    },
-    {
-      "client_info": {
-        "mobilesdk_app_id": "1:437251478983:android:3f2d17231d89940c",
-        "android_client_info": {
-          "package_name": "com.example.fbbitm"
-        }
-      },
-      "oauth_client": [
-        {
-          "client_id": "437251478983-devn1rmv7akgkk8qth0sq73c49vfi4c4.apps.googleusercontent.com",
-          "client_type": 3
-        }
-      ],
-      "api_key": [
-        {
-          "current_key": "AIzaSyA_ZbpcLJ38OcOFWS9PtY0iMK3HHwu-OQ8"
-        }
-      ],
-      "services": {
-        "appinvite_service": {
-          "other_platform_oauth_client": [
-            {
-              "client_id": "437251478983-devn1rmv7akgkk8qth0sq73c49vfi4c4.apps.googleusercontent.com",
-              "client_type": 3
-            }
-          ]
-        }
-      }
-    },
-    {
-      "client_info": {
-        "mobilesdk_app_id": "1:437251478983:android:23ee6e7883e5abd14675e2",
-        "android_client_info": {
-          "package_name": "com.example.firebaseauthpractice"
-        }
-      },
-      "oauth_client": [
-        {
-          "client_id": "437251478983-devn1rmv7akgkk8qth0sq73c49vfi4c4.apps.googleusercontent.com",
-          "client_type": 3
-        }
-      ],
-      "api_key": [
-        {
-          "current_key": "AIzaSyA_ZbpcLJ38OcOFWS9PtY0iMK3HHwu-OQ8"
-        }
-      ],
-      "services": {
-        "appinvite_service": {
-          "other_platform_oauth_client": [
-            {
-              "client_id": "437251478983-devn1rmv7akgkk8qth0sq73c49vfi4c4.apps.googleusercontent.com",
+              "client_id": "408096642564-93ev9m58inqfe6ujile8oibf0r4ur7ld.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

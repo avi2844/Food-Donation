@@ -33,11 +33,13 @@ public class DonationAdapter extends RecyclerView.Adapter<DonationAdapter.Donati
     @Override
     public void onBindViewHolder(@NonNull DonationListViewHolder holder, int position) {
         final InformationModel model = modelList.get(position);
-        holder.foodName.setText(modelList.get(position).getFoodName());
+        holder.Category.setText(modelList.get(position).getCategory());
         holder.foodQtn.setText(modelList.get(position).getQuantity());
         holder.cDate.setText(modelList.get(position).getDate());
         holder.cTime.setText(modelList.get(position).getTime());
         holder.dAddress.setText(modelList.get(position).getAdress());
+        holder.phone.setText(modelList.get(position).getPhone());
+        holder.donatorname.setText(modelList.get(position).getDonatorName());
     }
 
     @Override
@@ -46,15 +48,18 @@ public class DonationAdapter extends RecyclerView.Adapter<DonationAdapter.Donati
     }
 
     public  class DonationListViewHolder extends RecyclerView.ViewHolder {
-        TextView foodName,foodQtn, cDate, cTime, dAddress;
+        TextView Category,foodQtn, cDate, cTime, dAddress, phone, donatorname;
 
         public DonationListViewHolder(@NonNull View itemView) {
             super(itemView);
-            foodName = itemView.findViewById(R.id.foodNameTV);
+            Category = itemView.findViewById(R.id.CategoryTV);
             foodQtn = itemView.findViewById(R.id.foodQunatityTV);
             cDate = itemView.findViewById(R.id.collectionDateTv);
             cTime = itemView.findViewById(R.id.collectionTimeTv);
             dAddress = itemView.findViewById(R.id.addressTV);
+            phone = itemView.findViewById(R.id.phoneTv);
+            donatorname = itemView.findViewById(R.id.nameTV);
+
         }
     }
 }
